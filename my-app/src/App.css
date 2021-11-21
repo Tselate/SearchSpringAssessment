@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+
+*{
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+}
+
+.form-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.5em 1em;
+}
+
+h6 {
+    display: inline-block;
+}
+
+.search-form {
+    display: inline-block;
+    
+}
+
+.resultDisplay {
+    max-width: 95%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}
+
+.itemCard {
+    margin: 0.5em;
+}
+
+.itemImg {
+    max-width: 100%;  
+}
+
+.itemName, .itemPrice {
+    font-size: 0.4rem;
+    margin: 0.3em 0;
+}

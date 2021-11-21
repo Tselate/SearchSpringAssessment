@@ -1,10 +1,10 @@
 import React from "react";
 import SearchItem from "./SearchItem";
+import "./App.css"
 
 function App() {
   return (
     <div className="App">
-      Hello World!
       <SearchItem/>
     </div>
   );

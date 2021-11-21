@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react"
 
+
 function SearchItem () {
     const [item, setItem] = useState("")
     const [itemResults, setItemResults] = useState("")
@@ -22,6 +23,7 @@ function SearchItem () {
             setItemResults(data.results)
             setResultPage(data.pagination.totalPages)
             console.log(data.pagination)
+            console.log(data.results)
         }catch(err) {
             alert("Item not found")
         }
@@ -48,8 +50,9 @@ function SearchItem () {
 
     return (
         <> 
-           <div className="form-container" onSubmit={itemLookUp}>
-               <form className="search-form" >
+           <div className="form-container" >
+               <h6>SearchSpring</h6>
+               <form className="search-form" onSubmit={itemLookUp}>
                    <input 
                         type="text" 
                         name="item"
@@ -60,24 +63,31 @@ function SearchItem () {
                     /> 
 
                     <button className="btn" type="submit">Search</button>
-               </form>
+               </form>               
+            </div>    
 
-               <div className="resultDisplay">
+            <div>
+
+                 {pages.map(page => (
+                     <button className="pagBtn">{page}</button>
+                 ))}
+            </div>  
+
+                 <div className="resultDisplay">
                     {itemsStored[0].map(item => (
-                       <>
-                        <div>{item.name}</div>
-                       </>
+                        <div className="itemCard">
+                            <div className="itemInfo">
+                                <img className="itemImg" src={item.imageUrl} alt="Item"/>
+                                <p className="itemName">{item.name}</p>
+                                <p className="itemPrice">${item.price}.00</p>
+                            </div>
+                        </div>
+                     
                     ))}
 
                </div>
 
-               <div>
-                 {pages.map(page => (
-                     <div>{page}</div>
-                 ))}
-               </div>
-               
-            </div>         
+                 
         
         </>
     )
