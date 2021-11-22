@@ -6,20 +6,62 @@
     font-family: 'Lato', sans-serif;
 }
 
+.container {
+    max-width: 95%;
+    margin: 0 auto;
+    box-shadow: inset 0px 0px 50px 5px  rgba(252, 174, 252, 0.6)
+}
+
 .form-container {
     display: flex;
     justify-content: space-between;
-    margin: 0.5em 1em;
-}
-
-h6 {
-    display: inline-block;
+    align-items: center;
+    margin: 0.2em 1em;
 }
 
 .search-form {
-    display: inline-block;
-    
+    display: inline-block;  
 }
+
+.logo {
+    display: inline-block;
+    margin: 0.5em 0;
+    padding: 0.2em;
+    font-style: italic;
+    font-weight: bolder;
+    color: rgb(7, 1, 1);
+}
+
+.searchInput {
+    margin: 0.5em 0;
+    font-size: 0.6rem;
+}
+
+.searchBtn {
+   padding: 0;
+   font-size: 0.6rem;
+   background-color: black;
+   color:  rgb(255, 139, 245);
+   border: 2px solid black;
+}
+
+.paginationContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 91.5%;
+    margin: 0 auto;
+}
+
+.pageBtn {
+    padding: 0;
+    font-size: 0.6rem;
+    background-color: black;
+    color:  rgb(255, 139, 245);
+    border: 2px solid black;
+}
+
+
 
 .resultDisplay {
     max-width: 95%;
@@ -39,4 +81,14 @@ h6 {
 .itemName, .itemPrice {
     font-size: 0.4rem;
     margin: 0.3em 0;
+}
+
+input {
+    border: 1px solid rgb(167, 14, 154);
+}
+
+button {
+    /* border: none;
+    border-right: 0.1px solid black;
+    font-size: 0.5rem; */
 }

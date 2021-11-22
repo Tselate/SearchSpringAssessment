@@ -1,39 +1,53 @@
-import React from "react"
+import React, {useState, useEffect} from "react"
 
-function Pagination() {
+function Pagination(props) {
+    const [searchPage, setSearchPage] = useState("")
 
     const paginationStorage = JSON.parse(sessionStorage.getItem("paginationKey"))
 
-    const paginationArray = []
+    
+    const itemLookUp = async () => {
+    
 
-    console.log(paginationStorage)
+        const url = `https://scmq7n.a.searchspring.io/api/search/search.json?siteId=scmq7n&q=${props.query}&resultsFormat=native&page=${searchPage} `
 
-    // let maxPage = paginationStorage.currentPage + Math.floor(5/2)
+        try {
+            const result = await fetch (url)
+            const data = await result.json()
+          
+        
+            console.log(data)
+        }catch(err) {
+            alert("Item not found")
+        }
 
-    // let minPage = paginationStorage.currentPage - Math.floor(5/2)
+    }
 
-    // console.log(maxPage, minPage)
+    // useEffect(() => {
+    //     //console.log(searchPage)
+    // }, [searchPage])
 
+    function target (e) {
+        setSearchPage(e.target.value)
+        itemLookUp()
+    }
 
-    // for (let i = 0; i < paginationStorage.totalPages; i++) {
-       
-       
-    // }
+    
 
    
     let array = []
 
     for (let i = paginationStorage.currentPage; i <= paginationStorage.currentPage + 4 && i <= paginationStorage.totalPages ; i++) {
-        array.push(<button>{i}</button>)
+        array.push(<button className="pageBtn" onClick={target} value={i}>{i}</button>)
       
     }
 
     if (paginationStorage.currentPage > 1) {
-        array.unshift(<button>N</button>)
+        array.unshift(<button  className="pageBtn"  onClick={target} value={paginationStorage.previousPage}>&lt;</button>)
     }
 
     if(paginationStorage.currentPage != paginationStorage.totalPages) {
-        array.push(<button>E</button>)
+        array.push(<button  className="pageBtn"  onClick={target} value={paginationStorage.nextPage}>&gt;</button>)
     }
 
 

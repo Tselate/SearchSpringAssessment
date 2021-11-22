@@ -2,22 +2,21 @@ import React, {useState, useEffect} from "react"
 import Pagination from "./Pagination"
 
 
+
 function SearchItem () {
     const [item, setItem] = useState("")
     const [itemResults, setItemResults] = useState("")
     const [resultPage, setResultPage] = useState("")
-    // const [itemName, setItemName] = useState("")
-    // const [itemImage, setItemImage] = useState("")
-    // const [itemPrice, setItemPrice] = useState("")
+    
 
     const itemsStored = JSON.parse(sessionStorage.getItem("itemsKey")) || []
-    const paginationArray=  JSON.parse(sessionStorage.getItem("paginationKey")) || []
-
+   
+    const paginationStorage = JSON.parse(sessionStorage.getItem("paginationKey"))
 
     const itemLookUp = async (e) => {
         e.preventDefault()
 
-        const url = `https://scmq7n.a.searchspring.io/api/search/search.json?siteId=scmq7n&q=${item}&resultsFormat=native&page=7 `
+        const url = `https://scmq7n.a.searchspring.io/api/search/search.json?siteId=scmq7n&q=${item}&resultsFormat=native&page=1 `
 
         try {
             const result = await fetch (url)
@@ -40,8 +39,6 @@ function SearchItem () {
         sessionStorage.setItem("itemsKey", JSON.stringify(itemsStored))
         sessionStorage.setItem("paginationKey", JSON.stringify(resultPage))
 
-        //sessionStorage.clear()
-
     },[itemResults])
 
     // let pages = []
@@ -50,38 +47,33 @@ function SearchItem () {
     // for(let i = 1; i <= resultPage; i++) {
     //     pages.push(i)       
     // }
+
+    
+
+    
  
 
 
     return (
-        <> 
+        <div className="container"> 
            <div className="form-container" >
-               <h6>SearchSpring</h6>
+               <h6 className="logo">SearchSpring</h6>
                <form className="search-form" onSubmit={itemLookUp}>
                    <input 
                         type="text" 
                         name="item"
                         placeholder="Search here..."
+                        className="searchInput"
                         required 
                         value={item}
                         onChange= {(e) => setItem(e.target.value)}
                     /> 
 
-                    <button className="btn" type="submit">Search</button>
+                    <button className="searchBtn" type="submit">Search</button>
                </form>               
             </div>    
 
-            <Pagination/>
-
-            {/* <div>
-
-                 {page.map(page => (
-                     <>
-                
-                     <button className="pagBtn">{page}</button>
-                     </>
-                 ))}
-            </div>   */}
+           <div className="paginationContainer"> <h6>Showing 25 results</h6> <Pagination  query="pink"/></div>
 
         
 
@@ -99,9 +91,11 @@ function SearchItem () {
 
                </div>
 
+               <div className="paginationContainer">  <Pagination  query="pink"/></div>
+
                  
         
-        </>
+        </div>
     )
 }
 
