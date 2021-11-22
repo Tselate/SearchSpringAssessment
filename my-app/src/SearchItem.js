@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react"
+import Pagination from "./Pagination"
 
 
 function SearchItem () {
@@ -9,21 +10,22 @@ function SearchItem () {
     // const [itemImage, setItemImage] = useState("")
     // const [itemPrice, setItemPrice] = useState("")
 
-    let itemsStored = JSON.parse(sessionStorage.getItem("itemsKey")) || []
+    const itemsStored = JSON.parse(sessionStorage.getItem("itemsKey")) || []
+    const paginationArray=  JSON.parse(sessionStorage.getItem("paginationKey")) || []
 
 
     const itemLookUp = async (e) => {
         e.preventDefault()
 
-        const url = `https://scmq7n.a.searchspring.io/api/search/search.json?siteId=scmq7n&q=${item}&resultsFormat=native&page=6 `
+        const url = `https://scmq7n.a.searchspring.io/api/search/search.json?siteId=scmq7n&q=${item}&resultsFormat=native&page=7 `
 
         try {
             const result = await fetch (url)
             const data = await result.json()
             setItemResults(data.results)
-            setResultPage(data.pagination.totalPages)
-            console.log(data.pagination)
-            console.log(data.results)
+            setResultPage(data.pagination)
+            // console.log(data.pagination)
+            // console.log(data.results)
         }catch(err) {
             alert("Item not found")
         }
@@ -36,15 +38,18 @@ function SearchItem () {
         itemsStored.splice(0, 1, itemResults)
        }
         sessionStorage.setItem("itemsKey", JSON.stringify(itemsStored))
+        sessionStorage.setItem("paginationKey", JSON.stringify(resultPage))
+
         //sessionStorage.clear()
 
     },[itemResults])
 
-    let pages = []
+    // let pages = []
 
-    for(let i = 1; i <= resultPage; i++) {
-        pages.push(i)       
-    }
+
+    // for(let i = 1; i <= resultPage; i++) {
+    //     pages.push(i)       
+    // }
  
 
 
@@ -66,12 +71,19 @@ function SearchItem () {
                </form>               
             </div>    
 
-            <div>
+            <Pagination/>
 
-                 {pages.map(page => (
+            {/* <div>
+
+                 {page.map(page => (
+                     <>
+                
                      <button className="pagBtn">{page}</button>
+                     </>
                  ))}
-            </div>  
+            </div>   */}
+
+        
 
                  <div className="resultDisplay">
                     {itemsStored[0].map(item => (
