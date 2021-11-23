@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/SearchSpringAssessment/static/css/main.0a7b14c5.chunk.css",
+    "main.js": "/SearchSpringAssessment/static/js/main.2253b4f4.chunk.js",
+    "main.js.map": "/SearchSpringAssessment/static/js/main.2253b4f4.chunk.js.map",
+    "runtime-main.js": "/SearchSpringAssessment/static/js/runtime-main.eddb43a5.js",
+    "runtime-main.js.map": "/SearchSpringAssessment/static/js/runtime-main.eddb43a5.js.map",
+    "static/js/2.059282ca.chunk.js": "/SearchSpringAssessment/static/js/2.059282ca.chunk.js",
+    "static/js/2.059282ca.chunk.js.map": "/SearchSpringAssessment/static/js/2.059282ca.chunk.js.map",
+    "static/js/3.449d1c2a.chunk.js": "/SearchSpringAssessment/static/js/3.449d1c2a.chunk.js",
+    "static/js/3.449d1c2a.chunk.js.map": "/SearchSpringAssessment/static/js/3.449d1c2a.chunk.js.map",
+    "index.html": "/SearchSpringAssessment/index.html",
+    "static/css/main.0a7b14c5.chunk.css.map": "/SearchSpringAssessment/static/css/main.0a7b14c5.chunk.css.map",
+    "static/js/2.059282ca.chunk.js.LICENSE.txt": "/SearchSpringAssessment/static/js/2.059282ca.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.eddb43a5.js",
+    "static/js/2.059282ca.chunk.js",
+    "static/css/main.0a7b14c5.chunk.css",
+    "static/js/main.2253b4f4.chunk.js"
+  ]
+}
