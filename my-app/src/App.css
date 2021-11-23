@@ -6,10 +6,10 @@
     font-family: 'Lato', sans-serif;
 }
 
-.container {
-    max-width: 95%;
-    margin: 0 auto;
-    box-shadow: inset 0px 0px 50px 5px  rgba(252, 174, 252, 0.6)
+html {
+    box-shadow: inset 0px 0px 50px 5px  rgba(252, 174, 252, 0.6);
+    min-height: 100vh;
+    overflow: auto;
 }
 
 .form-container {
@@ -30,6 +30,13 @@
     font-style: italic;
     font-weight: bolder;
     color: rgb(7, 1, 1);
+}
+
+.initialMessage {
+    font-size: 1.2rem;
+    max-width: 60%;
+    margin: 0 auto;
+    padding: 1.5em 0;
 }
 
 .searchInput {
@@ -61,8 +68,6 @@
     border: 2px solid black;
 }
 
-
-
 .resultDisplay {
     max-width: 95%;
     margin: 0 auto;
@@ -78,9 +83,17 @@
     max-width: 100%;  
 }
 
-.itemName, .itemPrice {
+.itemName, .itemPrice{
     font-size: 0.4rem;
     margin: 0.3em 0;
+}
+
+.itemMsrp {
+    font-size: 0.4rem;
+    margin: 0.3em 0;
+    text-decoration: line-through;
+    font-style: italic;
+
 }
 
 input {
@@ -88,7 +101,10 @@ input {
 }
 
 button {
-    /* border: none;
-    border-right: 0.1px solid black;
-    font-size: 0.5rem; */
+    padding: 0;
+    font-size: 0.6rem;
+    background-color: black;
+    color:  rgb(255, 139, 245);
+    border: 2px solid black;
 }
+
