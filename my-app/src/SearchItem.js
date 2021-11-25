@@ -20,8 +20,7 @@ function SearchItem () {
             const result = await fetch (url)
             const data = await result.json()
             setItemResults(data.results)
-            setPagination(data.pagination)
-            
+            setPagination(data.pagination) 
         }catch(err) {
             alert("Item not found")
         }
@@ -33,14 +32,20 @@ function SearchItem () {
        if (itemResults) {
         itemsStored.splice(0, 1, itemResults)
        }
-        sessionStorage.setItem("itemsKey", JSON.stringify(itemsStored))
+        sessionStorage.setItem("itemsKey", JSON.stringify(itemsStored)) 
+    },[itemResults, itemsStored, item])
+
+    useEffect(() => {
+        setSearchPage(1)
+    }, [item])
+
+
+
+    if(itemResults) {
         sessionStorage.setItem("paginationKey", JSON.stringify(pagination))
-        
-    },[itemResults, itemsStored, pagination])
+    }
 
-    
 
-   
     //Pagination of page will be determind based on what is inside the array below, along with min and max page numbers to be displayed 
     let paginationArray = []
 
@@ -53,13 +58,12 @@ function SearchItem () {
             maxPage = paginationStorage.totalPages
         }
     
-        if (maxPage > paginationStorage.totalPages) {
+        if (paginationStorage.currentPage === paginationStorage.totalPages) {
             minPage = paginationStorage.totalPages - 4
              
             if (minPage < 1) {
                 minPage = 1
             }
-    
             maxPage = paginationStorage.totalPages
         }
 
@@ -68,6 +72,14 @@ function SearchItem () {
 
         for(let i = minPage; i <= maxPage; i++) {
             paginationArray.push(i)
+        }
+
+        if(paginationStorage.currentPage !== 1) {
+            paginationArray.unshift("<")
+        }
+
+        if (paginationStorage.currentPage !== paginationStorage.totalPages) {
+            paginationArray.push(">")
         }
     }
 
@@ -79,31 +91,22 @@ function SearchItem () {
             }else {
                 setSearchPage(paginationStorage.previousPage)
             }           
+        } else if (e.target.value === ">") {
+            if(paginationStorage.currentPage === paginationStorage.totalPages) {
+                setSearchPage(paginationStorage.totalPages)
+            }else{
+                setSearchPage(paginationStorage.nextPage)
+            }
         }else if(e.target.value !== "<" || e.target.value !== ">") {
             setSearchPage(e.target.value)
         }
     }
 
-    
 
-
-    // Based on what is in the session storage, push all of the page numbers to the paginationArray
-    if(paginationStorage) {
-        
-
-        // if(paginationStorage.currentPage !== paginationStorage.totalPagespaginationStorage) {
-        //     paginationArray.unshift("<")
-        // }
-
-        // if (paginationStorage.currentPage !== paginationStorage.totalPages) {
-        //     paginationArray.push(">")
-        // }
-        
-    }
 
     //****PAGE DISPLAY*****//
 
-    if(itemResults && itemsStored[0]) {
+    if((itemResults && itemsStored[0]) || itemsStored.length > 1) {
         return (
         <div className="container"> 
            <div className="form-container" >
@@ -151,7 +154,7 @@ function SearchItem () {
                                 <img className="itemImg" src={item.imageUrl} alt="Item"/>
                                 <p className="itemName">{item.name}</p>
                                 <p className="itemMsrp">${item.msrp}.00</p>
-                                <p className="itemPrice">${item.price}.00</p>
+                                <p className="itemPrice">${item.price}</p>
                             </div>
                         </div>
                      
