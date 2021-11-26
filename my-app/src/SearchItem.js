@@ -149,6 +149,7 @@ function SearchItem () {
                     <form onSubmit={itemLookUp} >
                         {paginationArray.map(arr => (
                             <>
+                                Heloo
                                 <button
                                     key={arr.value}
                                     type="submit"
