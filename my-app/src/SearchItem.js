@@ -98,6 +98,9 @@ function SearchItem () {
 
    
 
+
+   
+
     //Function to grab value of button clicked and set it to the page number that is to be searched and displayed 
     function target (e) {
         if(e.target.value === "<") {
@@ -118,7 +121,7 @@ function SearchItem () {
         setItem(item !== "" ? item : savedItem)
     }
 
-
+    console.log(paginationArray)
 
     //****PAGE DISPLAY*****//
 

@@ -22,13 +22,12 @@ html {
     font-weight: bolder;
     font-size: 1.2rem;
     color: rgb(7, 1, 1);
-    background:linear-gradient(160deg,rgb(141, 42, 80), transparent 50%) top;
+    background:linear-gradient( 1deg,rgb(141, 42, 80), transparent 10%) top;
 }
 
 .initialMessage {
     text-align: center;
     font-size: 3rem;
-    font-weight: bolder;
     margin: 1em auto;
 }
 
