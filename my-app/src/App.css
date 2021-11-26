@@ -7,9 +7,88 @@
 }
 
 html {
-    box-shadow: inset 0px 0px 50px 5px  rgba(252, 174, 252, 0.6);
+    box-shadow: inset 0px 0px 80px 3px rgb(230, 230, 218);
     min-height: 100vh;
     overflow: auto;
+}
+
+
+/* ==============
+    Typography 
+=================*/
+
+.logo {
+    font-style: italic;
+    font-weight: bolder;
+    font-size: 1.2rem;
+    color: rgb(7, 1, 1);
+    background:linear-gradient(160deg,rgb(141, 42, 80), transparent 50%) top;
+}
+
+.initialMessage {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: bolder;
+    margin: 1em auto;
+}
+
+.searchInput {
+    margin: 0.5em 0;
+    font-size: 1rem;
+    color: black;
+}
+
+.searchBtn {
+    padding: 0;
+    font-size: 1rem;
+    background-color: rgb(75, 13, 37);
+    color: white;
+    border: 2px solid  rgb(75, 13, 37);
+ }
+
+ .resultAmt {
+     font-size: 0.9rem;
+ }
+
+ .btn{
+    padding: 0;
+    font-size: 1rem;
+    background-color: rgb(75, 13, 37);
+    color: white;
+    border: 2px solid  rgb(75, 13, 37);
+}
+
+input {
+    border: 1px solid rgb(87, 15, 43);
+}
+
+.itemName, .itemPrice{
+    font-size: 1rem;
+    margin: 0.3em 0;
+}
+
+.itemMsrp {
+    font-size: 1rem;
+    margin: 0.3em 0;
+    text-decoration: line-through;
+    font-style: italic;  
+}
+
+.itemInfo {
+    text-align: center;
+}
+
+.itemPrice {
+    color:rgb(104, 12, 47);
+    font-weight: bolder;
+}
+/* ==============
+    Layout
+=================*/
+
+.logo { 
+    margin: 0.5em 0;
+    padding: 0.2em;
 }
 
 .form-container {
@@ -23,33 +102,11 @@ html {
     display: inline-block;  
 }
 
-.logo {
-    display: inline-block;
-    margin: 0.5em 0;
-    padding: 0.2em;
-    font-style: italic;
-    font-weight: bolder;
-    color: rgb(7, 1, 1);
-}
-
-.initialMessage {
-    font-size: 1.2rem;
-    max-width: 60%;
-    margin: 0 auto;
-    padding: 1.5em 0;
-}
-
-.searchInput {
-    margin: 0.5em 0;
-    font-size: 0.6rem;
-}
-
-.searchBtn {
-   padding: 0;
-   font-size: 0.6rem;
-   background-color: black;
-   color:  rgb(255, 139, 245);
-   border: 2px solid black;
+.resultDisplay {
+    max-width: 95%;
+    margin: 0.5em auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
 .paginationContainer {
@@ -60,19 +117,8 @@ html {
     margin: 0 auto;
 }
 
-.pageBtn {
-    padding: 0;
-    font-size: 0.6rem;
-    background-color: black;
-    color:  rgb(255, 139, 245);
-    border: 2px solid black;
-}
-
-.resultDisplay {
-    max-width: 95%;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+.bottomPagination {
+    margin-left: auto;
 }
 
 .itemCard {
@@ -83,28 +129,68 @@ html {
    max-width: 80%;
 }
 
-.itemName, .itemPrice{
-    font-size: 1rem;
-    margin: 0.3em 0;
+/* ==============
+    Media Queries 
+=================*/
+
+@media (max-width: 400px) {
+    .searchInput {
+        font-size: 0.7rem;
+    }
+    
+    .searchBtn {
+        font-size: 0.7rem;
+     }   
 }
 
-.itemMsrp {
-    font-size: 1rem;
-    margin: 0.3em 0;
-    text-decoration: line-through;
-    font-style: italic;
+@media (min-width: 1050px) {
+    /* ===========
+       Typography
+    =============*/
 
+    .logo { 
+        font-size: 2.5rem;
+    }
+
+    .initialMessage {
+        justify-self: center;
+        font-size: 2.5rem;
+        max-width: 77%;
+        margin: 1em auto;
+    }
+
+    .searchInput {
+        margin: 0.5em 0;
+        font-size: 2rem;
+        color: black;
+    }
+
+    .searchBtn {
+        font-size: 2rem;
+    }
+
+    .resultAmt, .btn {
+        font-size: 1.6rem;
+    }
+
+    .itemName, .itemPrice, .itemMsrp{
+        font-size: 1.2rem;
+    }
+
+    /* ============
+        Layout
+    ===============*/
+
+    .resultDisplay {
+        max-width: 95%;
+        margin: 0.5em auto;
+        display: grid;
+        grid-template-columns: repeat(5, minmax(200px, 1fr));
+    }
+
+    
 }
 
-input {
-    border: 1px solid rgb(167, 14, 154);
-}
 
-button {
-    padding: 0;
-    font-size: 1rem;
-    background-color: black;
-    color:  rgb(255, 139, 245);
-    border: 2px solid black;
-}
+
 

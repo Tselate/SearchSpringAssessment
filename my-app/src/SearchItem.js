@@ -26,7 +26,9 @@ function SearchItem () {
         }catch(err) {
             alert("Item not found")
         }
+        
         setItemSearched(item !== "" ? item : savedItem)
+        
     }
 
  
@@ -93,7 +95,6 @@ function SearchItem () {
         
     }
 
-    
    
 
     //Function to grab value of button clicked and set it to the page number that is to be searched and displayed 
@@ -117,11 +118,6 @@ function SearchItem () {
     }
 
 
-   
-   
-
-    
-  
 
     //****PAGE DISPLAY*****//
 
@@ -145,7 +141,7 @@ function SearchItem () {
                </form>               
             </div>    
 
-           <div className="paginationContainer"> <h6>Showing {paginationStorage.perPage} results</h6> 
+           <div className="paginationContainer"> <h6 className="resultAmt">Showing {paginationStorage.perPage} results</h6> 
                     <form onSubmit={itemLookUp} >
                         {paginationArray.map(arr => (
                             <>
@@ -184,7 +180,7 @@ function SearchItem () {
                </div>
 
                <div className="paginationContainer"> 
-                    <form onSubmit={itemLookUp} >
+                    <form onSubmit={itemLookUp} className=" bottomPagination">
                         {paginationArray.map(arr => (
                             <>
                                 <button
@@ -225,7 +221,8 @@ function SearchItem () {
                </form>             
             </div>
 
-            <h1 className="initialMessage">Search for any item!!</h1> 
+            <div className="initialMessage"><p>Let's go shopping!!</p>
+            </div> 
         </div>    
         )
     }
