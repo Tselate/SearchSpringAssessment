@@ -29,6 +29,7 @@ function SearchItem () {
         
         setItemSearched(item !== "" ? item : savedItem)
         
+        
     }
 
  
@@ -114,7 +115,7 @@ function SearchItem () {
         }else if(e.target.value !== "<" || e.target.value !== ">") {
             setSearchPage(e.target.value)
         }
-        setItem(savedItem)
+        setItem(item !== "" ? item : savedItem)
     }
 
 
