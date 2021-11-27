@@ -6,6 +6,7 @@ function SearchItem () {
     const [itemResults, setItemResults] = useState("")
     const [pagination, setPagination] = useState("")
     const [searchPage, setSearchPage] = useState("")
+    const [paginationDsiplay, setPaginationDisplay] = useState([])
 
     const paginationStorage = JSON.parse(sessionStorage.getItem("paginationKey"))
     const itemsStored = JSON.parse(sessionStorage.getItem("itemsKey")) || []
@@ -29,20 +30,26 @@ function SearchItem () {
         setItemSearched(item !== "" ? item : savedItem)
     }
 
- 
+
     // Updated items stored in session storage
     useEffect(() => {
        if (itemResults) {
         itemsStored.splice(0, 1, itemResults)
        }
-        sessionStorage.setItem("itemsKey", JSON.stringify(itemsStored)) 
+        sessionStorage.setItem("itemsKey", JSON.stringify(itemsStored))
     },[itemResults, itemsStored, item])
 
+    
     useEffect(() => {
         setSearchPage(1)
     }, [item])
 
     
+    //Pagination diplay 
+    useEffect(() => {
+        setPaginationDisplay(paginationArray)
+    }, [itemsStored[0][1].brand])
+
 
 
     // Save pagination and searched item in session storage
@@ -91,9 +98,10 @@ function SearchItem () {
 
         if (paginationStorage.currentPage !== paginationStorage.totalPages) {
             paginationArray.push(">")  
-        }
-        
+        }        
     }
+
+   
 
     //Function to grab value of button clicked and set it to the page number that is to be searched and displayed 
     function target (e) {
@@ -115,7 +123,11 @@ function SearchItem () {
         setItem(item !== "" ? item : savedItem)
     }
 
-  
+    
+
+
+
+
 
     //****PAGE DISPLAY*****//
 
@@ -140,9 +152,8 @@ function SearchItem () {
             </div>    
 
            <div className="paginationContainer"> <h6 className="resultAmt">Showing {paginationStorage.perPage} results</h6> 
-                   
-                        {paginationArray.map(arr => (
-                            <form onSubmit={itemLookUp} >
+                    <form onSubmit={itemLookUp} >
+                        {paginationDsiplay.map(arr => (
                             <>
                                 <button
                                     key={arr.value}
@@ -156,10 +167,9 @@ function SearchItem () {
                                 </button>
                                 
                             </>
-                            </form>
                         ))}
 
-                   
+                    </form>
            </div>
 
     
@@ -169,7 +179,6 @@ function SearchItem () {
                             <div className="itemInfo" key={item.uid}>
                                 <img className="itemImg" src={item.imageUrl} alt="Item"/>
                                 <p className="itemName">{item.name}</p>
-                                {/* <p className="itemMsrp">${item.msrp > }</p> */}
                                 {item.msrp > item.price ? <p className="itemMsrp">${item.msrp}.00</p> : null}
                                 <p className="itemPrice">${item.price % 1 !== 0 ? `${item.price}0`: `${item.price}.00`}</p>
                             </div>
@@ -181,7 +190,7 @@ function SearchItem () {
 
                <div className="paginationContainer"> 
                     <form onSubmit={itemLookUp} className=" bottomPagination">
-                        {paginationArray.map(arr => (
+                        {paginationDsiplay.map(arr => (
                             <>
                                 <button
                                     key={arr.value}
