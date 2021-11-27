@@ -26,7 +26,6 @@ function SearchItem () {
         }catch(err) {
             alert("Item not found")
         }
-        
         setItemSearched(item !== "" ? item : savedItem)
     }
 
@@ -42,6 +41,8 @@ function SearchItem () {
     useEffect(() => {
         setSearchPage(1)
     }, [item])
+
+    
 
 
     // Save pagination and searched item in session storage
@@ -94,8 +95,6 @@ function SearchItem () {
         
     }
 
-
-
     //Function to grab value of button clicked and set it to the page number that is to be searched and displayed 
     function target (e) {
         if(e.target.value === "<") {
@@ -116,9 +115,11 @@ function SearchItem () {
         setItem(item !== "" ? item : savedItem)
     }
 
+  
+
     //****PAGE DISPLAY*****//
 
-    if(itemsStored[0] && paginationArray.length > 1) {
+    if(itemsStored[0]) {
         return (
         <div className="container"> 
            <div className="form-container" >
@@ -139,8 +140,9 @@ function SearchItem () {
             </div>    
 
            <div className="paginationContainer"> <h6 className="resultAmt">Showing {paginationStorage.perPage} results</h6> 
-                    <form onSubmit={itemLookUp} >
+                   
                         {paginationArray.map(arr => (
+                            <form onSubmit={itemLookUp} >
                             <>
                                 <button
                                     key={arr.value}
@@ -150,13 +152,14 @@ function SearchItem () {
                                     value={arr}
                                     onClick={target} 
                                 >
-                                    {arr + 3}
+                                    {arr}
                                 </button>
                                 
                             </>
+                            </form>
                         ))}
 
-                    </form>
+                   
            </div>
 
     
