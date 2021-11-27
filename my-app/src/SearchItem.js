@@ -27,7 +27,9 @@ function SearchItem () {
             alert("Item not found")
         }
         setItemSearched(item !== "" ? item : savedItem)
+        
     }
+
 
 
     // Updated items stored in session storage
@@ -38,6 +40,7 @@ function SearchItem () {
         sessionStorage.setItem("itemsKey", JSON.stringify(itemsStored))
     },[itemResults, itemsStored, item])
 
+    
     
     useEffect(() => {
         setSearchPage(1)
@@ -50,11 +53,13 @@ function SearchItem () {
         sessionStorage.setItem("searchKey", JSON.stringify(itemSearched))
     }
 
+   
+
 
     //Pagination of page will be determind based on what is inside the array below, along with min and max page numbers to be displayed 
     let paginationArray = []
    
-
+    
     if(paginationStorage) {
         let maxPage = paginationStorage.totalPages
         let maxRight = paginationStorage.currentPage + 2 
@@ -114,16 +119,16 @@ function SearchItem () {
         }
         setItem(item !== "" ? item : savedItem)
     }
-
-    
-
-
-
-
+ 
+    //Pagination Display 
+    let paginationDisplay = []
+    if(itemLookUp) {
+        paginationDisplay.push(paginationArray)
+    }
 
     //****PAGE DISPLAY*****//
 
-    if(itemsStored[0]) {
+    if(itemsStored[0] && paginationDisplay[0]) {
         return (
         <div className="container"> 
            <div className="form-container" >
@@ -145,7 +150,7 @@ function SearchItem () {
 
            <div className="paginationContainer"> <h6 className="resultAmt">Showing {paginationStorage.perPage} results</h6> 
                     <form onSubmit={itemLookUp} >
-                        {paginationArray.map(arr => (
+                        {paginationDisplay[0].map(arr => (
                             <>
                                 <button
                                     key={arr.value}
@@ -182,7 +187,7 @@ function SearchItem () {
 
                <div className="paginationContainer"> 
                     <form onSubmit={itemLookUp} className=" bottomPagination">
-                        {paginationArray.map(arr => (
+                        {paginationDisplay[0].map(arr => (
                             <>
                                 <button
                                     key={arr.value}
