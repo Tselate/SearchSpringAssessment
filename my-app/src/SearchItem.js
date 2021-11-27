@@ -28,8 +28,6 @@ function SearchItem () {
         }
         
         setItemSearched(item !== "" ? item : savedItem)
-        
-        
     }
 
  
@@ -96,10 +94,6 @@ function SearchItem () {
         
     }
 
-   
-
-
-   
 
     //Function to grab value of button clicked and set it to the page number that is to be searched and displayed 
     function target (e) {
@@ -121,11 +115,9 @@ function SearchItem () {
         setItem(item !== "" ? item : savedItem)
     }
 
-    console.log(paginationArray)
-
     //****PAGE DISPLAY*****//
 
-    if(itemsStored[0]) {
+    if(itemsStored[0] && paginationArray) {
         return (
         <div className="container"> 
            <div className="form-container" >
@@ -147,9 +139,8 @@ function SearchItem () {
 
            <div className="paginationContainer"> <h6 className="resultAmt">Showing {paginationStorage.perPage} results</h6> 
                     <form onSubmit={itemLookUp} >
-                        {paginationArray.map(arr => (
+                        {paginationArray ? paginationArray.map(arr => (
                             <>
-                                Heloo
                                 <button
                                     key={arr.value}
                                     type="submit"
@@ -162,7 +153,7 @@ function SearchItem () {
                                 </button>
                                 
                             </>
-                        ))}
+                        )) : paginationArray}
 
                     </form>
            </div>
