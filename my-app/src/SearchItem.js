@@ -6,7 +6,6 @@ function SearchItem () {
     const [itemResults, setItemResults] = useState("")
     const [pagination, setPagination] = useState("")
     const [searchPage, setSearchPage] = useState("")
-    const [paginationDsiplay, setPaginationDisplay] = useState([])
 
     const paginationStorage = JSON.parse(sessionStorage.getItem("paginationKey"))
     const itemsStored = JSON.parse(sessionStorage.getItem("itemsKey")) || []
@@ -43,13 +42,6 @@ function SearchItem () {
     useEffect(() => {
         setSearchPage(1)
     }, [item])
-
-    
-    //Pagination diplay 
-    useEffect(() => {
-        setPaginationDisplay(paginationArray)
-    }, [itemsStored[0][1].brand])
-
 
 
     // Save pagination and searched item in session storage
@@ -153,7 +145,7 @@ function SearchItem () {
 
            <div className="paginationContainer"> <h6 className="resultAmt">Showing {paginationStorage.perPage} results</h6> 
                     <form onSubmit={itemLookUp} >
-                        {paginationDsiplay.map(arr => (
+                        {paginationArray.map(arr => (
                             <>
                                 <button
                                     key={arr.value}
@@ -190,7 +182,7 @@ function SearchItem () {
 
                <div className="paginationContainer"> 
                     <form onSubmit={itemLookUp} className=" bottomPagination">
-                        {paginationDsiplay.map(arr => (
+                        {paginationArray.map(arr => (
                             <>
                                 <button
                                     key={arr.value}
