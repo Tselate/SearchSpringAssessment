@@ -9,7 +9,8 @@ function SearchItem () {
 
     const paginationStorage = JSON.parse(sessionStorage.getItem("paginationKey"))
     const itemsStored = JSON.parse(sessionStorage.getItem("itemsKey")) || []
-    const savedItem = JSON.parse(sessionStorage.getItem("searchKey"))
+    const savedItem = JSON.parse(sessionStorage.getItem("searchKey")) 
+    const paginationDisplay = JSON.parse(sessionStorage.getItem("paginationDisplayKey"))
    
   
     // Form submission will call this asyn function to fetch SearchSpring API data and set it to ItemResults and Pagination 
@@ -37,7 +38,8 @@ function SearchItem () {
        if (itemResults) {
         itemsStored.splice(0, 1, itemResults)
        }
-        sessionStorage.setItem("itemsKey", JSON.stringify(itemsStored))
+       sessionStorage.setItem("paginationDisplayKey", JSON.stringify(paginationArray))
+       sessionStorage.setItem("itemsKey", JSON.stringify(itemsStored))
     },[itemResults, itemsStored, item])
 
     
@@ -46,15 +48,11 @@ function SearchItem () {
         setSearchPage(1)
     }, [item])
 
-
     // Save pagination and searched item in session storage
     if(itemResults) {
         sessionStorage.setItem("paginationKey", JSON.stringify(pagination))
         sessionStorage.setItem("searchKey", JSON.stringify(itemSearched))
     }
-
-   
-
 
     //Pagination of page will be determind based on what is inside the array below, along with min and max page numbers to be displayed 
     let paginationArray = []
@@ -98,8 +96,6 @@ function SearchItem () {
         }        
     }
 
-   
-
     //Function to grab value of button clicked and set it to the page number that is to be searched and displayed 
     function target (e) {
         if(e.target.value === "<") {
@@ -120,15 +116,10 @@ function SearchItem () {
         setItem(item !== "" ? item : savedItem)
     }
  
-    //Pagination Display 
-    let paginationDisplay = []
-    if(itemLookUp) {
-        paginationDisplay.push(paginationArray)
-    }
 
     //****PAGE DISPLAY*****//
 
-    if(itemsStored[0] && paginationDisplay[0]) {
+    if(itemsStored[0]) {
         return (
         <div className="container"> 
            <div className="form-container" >
@@ -149,8 +140,8 @@ function SearchItem () {
             </div>    
 
            <div className="paginationContainer"> <h6 className="resultAmt">Showing {paginationStorage.perPage} results</h6> 
-                    <form onSubmit={itemLookUp} >
-                        {paginationDisplay[0].map(arr => (
+                    <form onSubmit={itemLookUp}>
+                        {paginationDisplay.map(arr => (
                             <>
                                 <button
                                     key={arr.value}
@@ -187,7 +178,7 @@ function SearchItem () {
 
                <div className="paginationContainer"> 
                     <form onSubmit={itemLookUp} className=" bottomPagination">
-                        {paginationDisplay[0].map(arr => (
+                        {paginationDisplay.map(arr => (
                             <>
                                 <button
                                     key={arr.value}
