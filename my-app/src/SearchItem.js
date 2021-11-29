@@ -17,7 +17,7 @@ function SearchItem () {
     const itemLookUp = async (e) => {
         e.preventDefault()
 
-        const url = `https://scmq7n.a.searchspring.io/api/search/search.json?siteId=scmq7n&q=${item}&resultsFormat=native&page=${searchPage || 1} `
+        const url = `https://scmq7n.a.searchspring.io/api/search/search.json?siteId=scmq7n&q=${item}&resultsFormat=native&page=${searchPage} `
 
         try {
             const result = await fetch (url)
@@ -28,24 +28,16 @@ function SearchItem () {
             alert("Item not found")
         }
         setItemSearched(item !== "" ? item : savedItem)
-        
+        window.location.reload()                                   
     }
 
 
 
     // Updated items stored in session storage
-    useEffect(() => {
-       if (itemResults) {
+    if (itemResults) {
         itemsStored.splice(0, 1, itemResults)
-       }
-       sessionStorage.setItem("itemsKey", JSON.stringify(itemsStored))
-    },[itemResults, itemsStored, item])
-
-    
-    
-    useEffect(() => {
-        setSearchPage(1)
-    }, [item])
+        sessionStorage.setItem("itemsKey", JSON.stringify(itemsStored))
+    }
 
     // Save pagination and searched item in session storage
     if(itemResults) {
