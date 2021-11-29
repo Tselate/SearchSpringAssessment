@@ -131,7 +131,7 @@ function SearchItem () {
                                     key={arr}
                                     type="submit"
                                     name="subBtn"
-                                    className={arr == paginationStorage.currentPage ? "currentPage" : "btn"}
+                                    className={arr == paginationStorage.currentPage ? "currentPage" : "btns"}
                                     value={arr}
                                     onClick={target}
                                 >
@@ -168,7 +168,7 @@ function SearchItem () {
                                     key={arr.value}
                                     type="submit"
                                     name="subBtn"
-                                    className="btn"
+                                    className={arr == paginationStorage.currentPage ? "currentPage" : "btns"}
                                     value={arr}
                                     onClick={target} 
                                 >

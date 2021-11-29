@@ -43,26 +43,24 @@ html {
     background-color: rgb(75, 13, 37);
     color: white;
     border: 2px solid  rgb(75, 13, 37);
- }
+}
 
- .resultAmt {
+.resultAmt {
      font-size: 0.9rem;
- }
+}
 
- .btn{
-    padding: 0;
-    font-size: 1rem;
+.btns {
+    font-size: 1.2rem;
     background-color: rgb(75, 13, 37);
     color: white;
     border: 2px solid  rgb(75, 13, 37);
 }
 
 .currentPage {
-    padding: 0;
-    font-size: 1rem;
+    font-size: 1.2rem;
     background-color: rgb(170, 92, 122);
-    color: white;
     border: 2px solid  rgb(170, 92, 122);
+    color: white;
 }
 
 input {
@@ -148,6 +146,10 @@ input {
     .searchBtn {
         font-size: 0.7rem;
      }   
+
+    .btns, .currentPage {
+        font-size: 0.8rem;
+    }
 }
 
 @media (min-width: 1050px) {
@@ -176,7 +178,7 @@ input {
         font-size: 2rem;
     }
 
-    .resultAmt, .btn {
+    .resultAmt{
         font-size: 1.6rem;
     }
 
