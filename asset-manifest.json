@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/SearchSpringAssessment/static/css/main.e035384a.chunk.css",
-    "main.js": "/SearchSpringAssessment/static/js/main.e8136c70.chunk.js",
-    "main.js.map": "/SearchSpringAssessment/static/js/main.e8136c70.chunk.js.map",
+    "main.css": "/SearchSpringAssessment/static/css/main.0ff5f6f1.chunk.css",
+    "main.js": "/SearchSpringAssessment/static/js/main.0f2fda9b.chunk.js",
+    "main.js.map": "/SearchSpringAssessment/static/js/main.0f2fda9b.chunk.js.map",
     "runtime-main.js": "/SearchSpringAssessment/static/js/runtime-main.eddb43a5.js",
     "runtime-main.js.map": "/SearchSpringAssessment/static/js/runtime-main.eddb43a5.js.map",
     "static/js/2.059282ca.chunk.js": "/SearchSpringAssessment/static/js/2.059282ca.chunk.js",
@@ -10,13 +10,13 @@
     "static/js/3.449d1c2a.chunk.js": "/SearchSpringAssessment/static/js/3.449d1c2a.chunk.js",
     "static/js/3.449d1c2a.chunk.js.map": "/SearchSpringAssessment/static/js/3.449d1c2a.chunk.js.map",
     "index.html": "/SearchSpringAssessment/index.html",
-    "static/css/main.e035384a.chunk.css.map": "/SearchSpringAssessment/static/css/main.e035384a.chunk.css.map",
+    "static/css/main.0ff5f6f1.chunk.css.map": "/SearchSpringAssessment/static/css/main.0ff5f6f1.chunk.css.map",
     "static/js/2.059282ca.chunk.js.LICENSE.txt": "/SearchSpringAssessment/static/js/2.059282ca.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.eddb43a5.js",
     "static/js/2.059282ca.chunk.js",
-    "static/css/main.e035384a.chunk.css",
-    "static/js/main.e8136c70.chunk.js"
+    "static/css/main.0ff5f6f1.chunk.css",
+    "static/js/main.0f2fda9b.chunk.js"
   ]
 }
