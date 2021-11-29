@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react"
+import React, {useState} from "react"
 
 function SearchItem () {
     const [item, setItem] = useState("")
@@ -31,16 +31,10 @@ function SearchItem () {
         window.location.reload()                                   
     }
 
-
-
-    // Updated items stored in session storage
+    // Updated items stored in session storage as well as pagination and searched item in session storage
     if (itemResults) {
         itemsStored.splice(0, 1, itemResults)
         sessionStorage.setItem("itemsKey", JSON.stringify(itemsStored))
-    }
-
-    // Save pagination and searched item in session storage
-    if(itemResults) {
         sessionStorage.setItem("paginationKey", JSON.stringify(pagination))
         sessionStorage.setItem("searchKey", JSON.stringify(itemSearched))
     }
@@ -106,11 +100,10 @@ function SearchItem () {
         }
         setItem(item !== "" ? item : savedItem)
     }
- 
 
     //****PAGE DISPLAY*****//
 
-    if(itemsStored[0]) {
+    if(itemsStored[0] && paginationArray[0]) {
         return (
         <div className="container"> 
            <div className="form-container" >
@@ -135,12 +128,12 @@ function SearchItem () {
                         {paginationArray.map(arr => (
                             <>
                                 <button
-                                    key={arr.value}
+                                    key={arr}
                                     type="submit"
                                     name="subBtn"
-                                    className="btn"
+                                    className={arr == paginationStorage.currentPage ? "currentPage" : "btn"}
                                     value={arr}
-                                    onClick={target} 
+                                    onClick={target}
                                 >
                                     {arr}
                                 </button>
