@@ -10,7 +10,7 @@ function SearchItem () {
     const paginationStorage = JSON.parse(sessionStorage.getItem("paginationKey"))
     const itemsStored = JSON.parse(sessionStorage.getItem("itemsKey")) || []
     const savedItem = JSON.parse(sessionStorage.getItem("searchKey")) 
-    const paginationDisplay = JSON.parse(sessionStorage.getItem("paginationDisplayKey"))
+
    
   
     // Form submission will call this asyn function to fetch SearchSpring API data and set it to ItemResults and Pagination 
@@ -38,7 +38,6 @@ function SearchItem () {
        if (itemResults) {
         itemsStored.splice(0, 1, itemResults)
        }
-       sessionStorage.setItem("paginationDisplayKey", JSON.stringify(paginationArray))
        sessionStorage.setItem("itemsKey", JSON.stringify(itemsStored))
     },[itemResults, itemsStored, item])
 
@@ -141,7 +140,7 @@ function SearchItem () {
 
            <div className="paginationContainer"> <h6 className="resultAmt">Showing {paginationStorage.perPage} results</h6> 
                     <form onSubmit={itemLookUp}>
-                        {paginationDisplay.map(arr => (
+                        {paginationArray.map(arr => (
                             <>
                                 <button
                                     key={arr.value}
@@ -178,7 +177,7 @@ function SearchItem () {
 
                <div className="paginationContainer"> 
                     <form onSubmit={itemLookUp} className=" bottomPagination">
-                        {paginationDisplay.map(arr => (
+                        {paginationArray.map(arr => (
                             <>
                                 <button
                                     key={arr.value}
